@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 export default function Admin() {
   const router = useRouter();
   const [uid, setUid] = useState<string | null>();
+
   useEffect(() => {
     if (!localStorage.getItem("uid")) {
       router.push("/auth");
