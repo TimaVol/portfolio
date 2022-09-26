@@ -1,0 +1,25 @@
+@use "../core" as *;
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 32%);
+  grid-auto-rows: 224px;
+  justify-content: center;
+  gap: 10px;
+  height: 70vh;
+  width: 80%;
+  margin: 20px auto;
+  overflow: auto;
+
+  @include mq("tablet") {
+    grid-template-columns: repeat(2, 49%);
+  }
+
+  @include mq("phablet") {
+    grid-template-columns: 100%;
+  }
+
+  .item {
+    background: rgb(69, 52, 52);
+  }
+}

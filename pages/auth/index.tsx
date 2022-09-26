@@ -1,13 +1,24 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../common/firebase";
-import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
+import { FormEvent, useEffect, useState } from "react";
 
 export default function Auth() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const router = useRouter();
 
-  const siginHandle = () => {
-    signInWithEmailAndPassword(auth, "test@gmail.com", "12345678")
+  useEffect(() => {
+    if (localStorage.getItem("uid")) {
+      router.push("/auth/admin");
+    }
+  }, [router]);
+
+  const siginHandle = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
 
@@ -20,15 +31,28 @@ export default function Auth() {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+
+        console.error({ errorCode }, { errorMessage });
       });
   };
 
   return (
-    <>
-      Auth
-      <Button variant="contained" color="primary" onClick={siginHandle}>
-        test
-      </Button>
-    </>
+    <div>
+      <form onSubmit={(e) => siginHandle(e)}>
+        <input
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          name=""
+          id="email"
+        />
+        <input
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          name=""
+          id="password"
+        />
+        <input type="submit" value="login" />
+      </form>
+    </div>
   );
 }

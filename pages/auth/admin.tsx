@@ -1,5 +1,17 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Dashboard from "../../components/Dashboard";
+
+const staticItems = [
+  { id: 1 },
+  { id: 1 },
+  { id: 1 },
+  { id: 1 },
+  { id: 1 },
+  { id: 1 },
+  { id: 2 },
+  { id: 3 },
+];
 
 export default function Admin() {
   const router = useRouter();
@@ -13,5 +25,7 @@ export default function Admin() {
     setUid(localStorage.getItem("uid"));
   }, [router, uid]);
 
-  return <>{uid ? "admin" : "not allowed"}</>;
+  if (!uid) return "not allowed";
+
+  return <Dashboard items={staticItems} />;
 }
