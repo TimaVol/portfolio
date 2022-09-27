@@ -3,7 +3,7 @@
 .dashboard {
   display: grid;
   grid-template-columns: repeat(3, 32%);
-  grid-auto-rows: 224px;
+  grid-auto-rows: 250px;
   justify-content: center;
   gap: 10px;
   height: 70vh;
@@ -20,6 +20,19 @@
   }
 
   .item {
-    background: rgb(69, 52, 52);
+    position: relative;
+
+    h4 {
+      @include adaptiv-font(25, 20);
+      z-index: z("page-wrapper");
+    }
+
+    .img {
+      position: absolute;
+      bottom: 0;
+      height: 87%;
+      width: 100%;
+      border: 1px solid get($colors, "white");
+    }
   }
 }

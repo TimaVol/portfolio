@@ -3,14 +3,11 @@ import { useEffect, useState } from "react";
 import Dashboard from "../../components/Dashboard";
 
 const staticItems = [
-  { id: 1 },
-  { id: 1 },
-  { id: 1 },
-  { id: 1 },
-  { id: 1 },
-  { id: 1 },
-  { id: 2 },
-  { id: 3 },
+  { id: 1, title: "title" },
+  { id: 2, title: "title" },
+  { id: 3, title: "title" },
+  { id: 4, title: "title" },
+  { id: 5, title: "title" },
 ];
 
 export default function Admin() {
