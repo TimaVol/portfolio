@@ -29,6 +29,7 @@ $colors: (
   "second": rgb(39, 202, 69),
   "font": #ffffff,
   "linkHover": rgb(21, 21, 21),
+  "overlay": rgba(0, 0, 0, 0.5),
 );
 
 $fonts: (
@@ -39,5 +40,14 @@ $fonts: (
   "secondary": (
     "Rufina",
     serif,
+  ),
+);
+
+$transition: (
+  "primary": (
+    all 300ms ease-in-out,
+  ),
+  "secondary": (
+    all 800ms,
   ),
 );
