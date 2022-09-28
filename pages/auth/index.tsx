@@ -2,11 +2,12 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../common/firebase";
 import { useRouter } from "next/router";
 import { FormEvent, useEffect, useState } from "react";
+import Form from "../../components/Form";
+import { randomString } from "../../common";
 
 export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const router = useRouter();
 
   useEffect(() => {
@@ -15,7 +16,7 @@ export default function Auth() {
     }
   }, [router]);
 
-  const siginHandle = (e: FormEvent<HTMLFormElement>) => {
+  const siginHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     signInWithEmailAndPassword(auth, email, password)
@@ -37,8 +38,28 @@ export default function Auth() {
   };
 
   return (
-    <div>
-      <form onSubmit={(e) => siginHandle(e)}>
+    <>
+      <Form submitHandler={siginHandler} submitLable={"login"}>
+        <>
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            name=""
+            id="email"
+            required
+          />
+
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            name=""
+            id="password"
+            required
+          />
+        </>
+      </Form>
+
+      {/* <form onSubmit={(e) => siginHandle(e)}>
         <input
           onChange={(e) => setEmail(e.target.value)}
           type="email"
@@ -52,7 +73,7 @@ export default function Auth() {
           id="password"
         />
         <input type="submit" value="login" />
-      </form>
-    </div>
+      </form> */}
+    </>
   );
 }

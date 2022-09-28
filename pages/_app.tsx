@@ -11,7 +11,9 @@ import {
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
-      <Component {...pageProps} />
+      <div className="mainWrap">
+        <Component {...pageProps} />
+      </div>
     </RecoilRoot>
   );
 }

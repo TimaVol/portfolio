@@ -20,10 +20,10 @@
   }
 }
 
-body {
+.mainWrap {
   position: relative;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
   height: 100vh;
   background: get($colors, "gradient");
@@ -38,6 +38,10 @@ a {
 input {
   display: block;
   outline: none;
+
+  &[type="file"] {
+    cursor: pointer;
+  }
 
   &[type="submit"] {
     border: 1px solid;
@@ -79,8 +83,10 @@ button {
   }
 
   .modal {
-    height: 60%;
-    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
     cursor: default;
     background: get($colors, "white");
   }

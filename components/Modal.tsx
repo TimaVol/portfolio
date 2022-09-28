@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
-import styles from "../styles/components/Modal.module.scss";
 
 interface Props {
   children?: React.ReactNode;
