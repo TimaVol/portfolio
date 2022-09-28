@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 import styles from "../styles/components/Dashboard.module.scss";
 
 interface DashboardProps {
@@ -8,24 +9,26 @@ interface DashboardProps {
     link: string;
     imgUrl: string;
   }[];
+  deleteFunc?: () => void;
 }
 
-export default function Dashboard({ items }: DashboardProps) {
+export default function Dashboard({ items, deleteFunc }: DashboardProps) {
   return (
     <div className={styles.dashboard}>
       {items.map((item) => (
-        <a
-          href={item.link}
-          target={"_blank"}
-          rel="noreferrer"
-          className={styles.item}
-          key={item.id}
-        >
-          <h4>{item.title}</h4>
-          <div className={styles.img}>
-            <Image src={item.imgUrl} alt="" layout="fill" />
-          </div>
-        </a>
+        <div key={item.id} className={styles.item}>
+          <a href={item.link} target={"_blank"} rel="noreferrer">
+            <h4>{item.title}</h4>
+            <div className={styles.img}>
+              <Image src={item.imgUrl} alt="" layout="fill" />
+            </div>
+          </a>
+          {deleteFunc && (
+            <button onClick={deleteFunc} className={styles.deleteBtn}>
+              delete
+            </button>
+          )}
+        </div>
       ))}
     </div>
   );

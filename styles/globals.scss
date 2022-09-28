@@ -42,8 +42,46 @@ input {
   &[type="submit"] {
     border: 1px solid;
     cursor: pointer;
-    &:hover {
-      background-color: red;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  background-color: get($colors, "overlay");
+
+  &.transition {
+    &-enter {
+      opacity: 0;
     }
+    &-enter-active {
+      opacity: 1;
+      transition: get($transition, "secondary");
+    }
+    &-exit {
+      opacity: 1;
+    }
+    &-exit-active {
+      opacity: 0;
+      transition: get($transition, "secondary");
+    }
+  }
+
+  .modal {
+    height: 60%;
+    width: 60%;
+    cursor: default;
+    background: get($colors, "white");
   }
 }

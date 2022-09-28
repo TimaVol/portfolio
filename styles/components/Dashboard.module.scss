@@ -3,7 +3,7 @@
 .dashboard {
   display: grid;
   grid-template-columns: repeat(3, 32%);
-  grid-auto-rows: 250px;
+  grid-auto-rows: 310px;
   justify-content: center;
   gap: 10px;
   height: 70vh;
@@ -11,20 +11,27 @@
   margin: 20px auto;
   overflow: auto;
 
-  @include mq("tablet") {
+  @include mq("tablet-wide") {
     grid-template-columns: repeat(2, 49%);
   }
 
-  @include mq("phablet") {
+  @include mq("tablet-small") {
     grid-template-columns: 100%;
   }
 
   .item {
     position: relative;
 
+    a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
     h4 {
       @include adaptiv-font(25, 20);
-      z-index: z("page-wrapper");
     }
 
     .img {
@@ -32,7 +39,13 @@
       bottom: 0;
       height: 87%;
       width: 100%;
+
       border: 1px solid get($colors, "white");
+    }
+    .deleteBtn {
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
 }
