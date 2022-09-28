@@ -12,7 +12,7 @@ export default function Home({ items }: HomeProps) {
   return (
     <>
       <Social />
-      <Dashboard items={items} />;
+      <Dashboard items={items} />
     </>
   );
 }
