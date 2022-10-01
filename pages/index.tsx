@@ -6,7 +6,7 @@ import Dashboard from "../components/Dashboard";
 import Social from "../components/Social";
 
 interface HomeProps {
-  items: [];
+  items: Item[];
 }
 
 export default function Home({ items }: HomeProps) {
