@@ -1,1 +1,3 @@
-export const randomString = () => (Math.random() + 1).toString(36).substring(7);
+import { v4 as uuidv4 } from "uuid";
+
+export let UniqString: any = uuidv4();

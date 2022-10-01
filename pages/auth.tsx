@@ -1,9 +1,8 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../common/firebase";
+import { auth } from "../common/firebase";
 import { useRouter } from "next/router";
 import { FormEvent, useEffect, useState } from "react";
-import Form from "../../components/Form";
-import { randomString } from "../../common";
+import Form from "../components/Form";
 
 export default function Auth() {
   const [email, setEmail] = useState("");
@@ -12,7 +11,7 @@ export default function Auth() {
 
   useEffect(() => {
     if (localStorage.getItem("uid")) {
-      router.push("/auth/admin");
+      router.push("/admin");
     }
   }, [router]);
 
@@ -25,15 +24,14 @@ export default function Auth() {
 
         localStorage.setItem("uid", user.uid);
 
-        router.push("/auth/admin");
+        router.push("/admin");
 
         console.log({ user }, { userCredential });
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-
-        console.error({ errorCode }, { errorMessage });
+        throw new Error(
+          ` errorCode: ${error.code}, errorMessage: ${error.message}`
+        );
       });
   };
 
@@ -58,22 +56,6 @@ export default function Auth() {
           />
         </>
       </Form>
-
-      {/* <form onSubmit={(e) => siginHandle(e)}>
-        <input
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-          name=""
-          id="email"
-        />
-        <input
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          name=""
-          id="password"
-        />
-        <input type="submit" value="login" />
-      </form> */}
     </>
   );
 }
