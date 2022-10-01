@@ -20,13 +20,9 @@ export default function Auth() {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-
-        localStorage.setItem("uid", user.uid);
+        localStorage.setItem("uid", "true");
 
         router.push("/admin");
-
-        console.log({ user }, { userCredential });
       })
       .catch((error) => {
         throw new Error(
