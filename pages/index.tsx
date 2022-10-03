@@ -40,7 +40,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      items,
+      items: items.length != 0 && items,
     },
   };
 };

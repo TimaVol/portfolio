@@ -34,6 +34,17 @@ export default function Dashboard({ items, deleteFunc }: DashboardProps) {
       throw new Error(`${error}`);
     }
   };
+
+  if (!items)
+    return (
+      <div className="loader-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
+
   return (
     <div className={styles.dashboard}>
       {items?.map((item) => (
@@ -41,7 +52,7 @@ export default function Dashboard({ items, deleteFunc }: DashboardProps) {
           <a href={item.link} target={"_blank"} rel="noreferrer">
             <h4>{item.title}</h4>
             <div className={styles.img}>
-              <Image src={item.imgUrl} alt="" layout="fill" />
+              <Image src={item.imgUrl} alt="item img" layout="fill" priority />
             </div>
           </a>
           {deleteFunc && (

@@ -20,6 +20,11 @@
     width: 55px;
     border: 1px solid get($colors, "white");
 
+    @include mq("tablet-small") {
+      height: 45px;
+      width: 45px;
+    }
+
     @include mq("phablet") {
       height: 35px;
       width: 35px;
