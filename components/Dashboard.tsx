@@ -1,5 +1,5 @@
 import { deleteDoc, doc, getDoc } from 'firebase/firestore'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import React from 'react'
 import { db, storage } from '../common/firebase'
 import styles from '../styles/components/Dashboard.module.scss'
@@ -52,7 +52,13 @@ export default function Dashboard({ items, deleteFunc }: DashboardProps) {
           <a href={item.link} target={'_blank'} rel="noreferrer">
             <h4>{item.title}</h4>
             <div className={styles.img}>
-              <Image src={item.imgUrl} alt="item img" layout="fill" priority />
+              <Image
+                src={item.imgUrl}
+                alt="item img"
+                fill
+                sizes="fill"
+                priority
+              />
             </div>
           </a>
           {deleteFunc && (
