@@ -38,8 +38,8 @@ export default function Slider({ items }: Props) {
         fill="none"
       >
         <path
+          className="stroke-primaryText"
           d="M34.7612 3.50998L6.77956 31.4917C3.47497 34.7962 3.47497 40.2037 6.77956 43.5083L34.7612 71.49"
-          stroke="#F806CC"
           strokeWidth="7"
           strokeMiterlimit="10"
           strokeLinecap="round"
@@ -48,7 +48,7 @@ export default function Slider({ items }: Props) {
       </svg>
       <div className="relative flex flex-col justify-center items-center h-full w-full md:w-[93%]">
         <Swiper
-          className="h-4/5 2xl:h-5/6 w-5/6 mx-5 px-1"
+          className="h-4/5 2xl:h-5/6 w-full sm:w-5/6 sm:mx-5 px-1 select-none"
           grid={{
             rows: 2,
             fill: 'row',
@@ -58,7 +58,6 @@ export default function Slider({ items }: Props) {
           slidesPerView={3}
           pagination={{
             el: '.swiper-pagination',
-            type: 'bullets',
             clickable: true,
           }}
           autoplay={{
@@ -103,24 +102,29 @@ export default function Slider({ items }: Props) {
               },
             },
           }}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
         >
           {items.map((item) => (
             <SwiperSlide
               style={{ height: 'calc((95% - 30px) / 2)' }}
-              className="p-2.5 border border-secondaryText rounded-2xl"
+              className="relative p-2.5 border border-secondaryText rounded-2xl"
               key={Math.random()}
             >
+              <a
+                className="absolute top-0 left-0 bottom-0 right-0 z-10"
+                href={item.link}
+                target="_blank"
+                rel="noreferrer"
+              />
               <div className="h-3/4 relative w-full mb-3">
                 <Image
                   src={item.imgUrl}
                   fill
+                  sizes="100vw"
                   alt="asdf"
                   className="rounded-2xl"
                 />
               </div>
-              <h3 className="self-start whitespace-nowrap text-ellipsis w-full overflow-hidden   text-primaryText text-xl sm:text-3xl">
+              <h3 className="self-start whitespace-nowrap text-ellipsis w-full overflow-hidden text-primaryText text-xl sm:text-3xl">
                 {item.title}
               </h3>
             </SwiperSlide>
@@ -140,8 +144,8 @@ export default function Slider({ items }: Props) {
         fill="none"
       >
         <path
+          className="stroke-primaryText"
           d="M4.23877 71.49L32.2204 43.5083C35.525 40.2038 35.525 34.7963 32.2204 31.4917L4.23877 3.51001"
-          stroke="#F806CC"
           strokeWidth="7"
           strokeMiterlimit="10"
           strokeLinecap="round"

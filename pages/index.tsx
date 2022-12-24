@@ -2,7 +2,6 @@ import { collection, getDocs } from 'firebase/firestore'
 import { GetServerSideProps } from 'next'
 import { db } from '../common/firebase'
 import { Item } from '../common/types'
-import Dashboard from '../components/Dashboard'
 import Slider from '../components/Slider'
 import Social from '../components/Social'
 
@@ -12,7 +11,7 @@ interface HomeProps {
 
 export default function Home({ items }: HomeProps) {
   return (
-    <div className="flex flex-col justify-between bg-bgImage bg-contain bg-secondaryBg h-5/6 w-5/6 rounded-3xl p-3 sm:p-5">
+    <div className="flex flex-col justify-between bg-bgImage bg-contain bg-secondaryBg h-[98%] w-[93%] sm:h-5/6 sm:w-5/6 rounded-3xl p-3 sm:p-5">
       <Social />
       <Slider items={items} />
     </div>
