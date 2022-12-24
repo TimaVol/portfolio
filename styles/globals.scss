@@ -1,5 +1,17 @@
 @use 'core' as *;
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Ruluko&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Ruluko', sans-serif;
+  }
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -20,18 +32,22 @@
   }
 }
 
-.mainWrap {
-  background: get($colors, 'main-bg');
+body {
+  background: theme('colors.primaryBg');
 }
 
-.pageWrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  z-index: z('page-wrapper');
-}
+// .mainWrap {
+//   background: get($colors, 'main-bg');
+// }
+
+// .pageWrap {
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 100vh;
+//   z-index: z('page-wrapper');
+// }
 
 a {
   color: inherit;
@@ -107,7 +123,7 @@ button {
     width: 13px;
     height: 13px;
     border-radius: 50%;
-    background: #fff;
+    background: #a91079;
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
     &:nth-child(1) {
       left: 8px;
@@ -148,6 +164,60 @@ button {
       }
       100% {
         transform: scale(0);
+      }
+    }
+  }
+}
+
+.swiper-pagination {
+  display: flex;
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+
+  .swiper-pagination-bullet {
+    position: relative;
+    width: 29px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #a91079;
+    margin-left: 10px;
+    cursor: pointer;
+
+    @media (max-width: 400px) {
+      width: 22px;
+      height: 22px;
+    }
+
+    &:hover:after {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0, 0);
+      width: 75%;
+      height: 75%;
+      border-radius: 50%;
+      background-color: #a91079;
+      opacity: 0;
+      transition: 300ms;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &.swiper-pagination-bullet-active {
+      &:after {
+        transform: translate(-50%, -50%);
+        opacity: 1;
       }
     }
   }
