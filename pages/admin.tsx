@@ -9,7 +9,6 @@ import { auth, db, storage } from "../common/firebase"
 import { Item } from "../common/types"
 import Dashboard from "../components/Dashboard"
 import Modal from "../components/Modal"
-import styles from "../styles/admin.module.scss"
 import * as Form from "@radix-ui/react-form"
 
 export default function Admin() {
@@ -21,30 +20,30 @@ export default function Admin() {
   const [itemImg, setItemImg] = useState<FileList | null>()
   const [items, setItems] = useState<Item[]>()
 
+  const fetchData = async () => {
+    const querySnapshot = await getDocs(collection(db, "items"))
+
+    let items: Item[] = []
+
+    querySnapshot.forEach((doc) => {
+      items.push({
+        id: doc.id,
+        title: doc.data().title,
+        link: doc.data().link,
+        imgUrl: doc.data().imgUrl,
+        imgName: doc.data().imgName,
+      })
+    })
+
+    setItems(items)
+  }
+
   useEffect(() => {
     if (!localStorage.getItem("uid")) {
       router.push("/auth")
     }
 
     setUid(localStorage.getItem("uid"))
-
-    const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, "items"))
-
-      let items: Item[] = []
-
-      querySnapshot.forEach((doc) => {
-        items.push({
-          id: doc.id,
-          title: doc.data().title,
-          link: doc.data().link,
-          imgUrl: doc.data().imgUrl,
-          imgName: doc.data().imgName,
-        })
-      })
-
-      setItems(items)
-    }
 
     fetchData()
   }, [router, uid])
@@ -80,6 +79,7 @@ export default function Admin() {
         }
 
         const docRef = await addDoc(collection(db, "items"), newItem)
+        fetchData()
       } catch (error) {
         throw new Error(`${error}`)
       }
@@ -106,11 +106,24 @@ export default function Admin() {
 
   return (
     <>
-      <button className={styles.addItem} onClick={modalCloseHandler}>
+      <button
+        className="absolute top-0 left-0 rounded bg-blue-500 py-2 px-4 font-bold text-white transition-all hover:bg-blue-700"
+        onClick={modalCloseHandler}
+      >
         add item
       </button>
 
-      <button className={styles.logout} onClick={logoutHandler}>
+      <button
+        className="absolute top-0 left-1/2 -translate-x-1/2 rounded bg-blue-500 py-2 px-4 font-bold text-white transition-all hover:bg-blue-700"
+        onClick={() => router.push("/")}
+      >
+        Home
+      </button>
+
+      <button
+        className="absolute top-0 right-0 rounded bg-blue-500 py-2 px-4 font-bold text-white transition-all hover:bg-blue-700"
+        onClick={logoutHandler}
+      >
         logout
       </button>
 
@@ -200,7 +213,7 @@ export default function Admin() {
         </Form.Root>
       </Modal>
 
-      <Dashboard items={items} deleteFunc />
+      <Dashboard items={items} deleteFunc getItemsFunc={fetchData} />
     </>
   )
 }

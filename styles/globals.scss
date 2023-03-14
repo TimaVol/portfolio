@@ -1,14 +1,14 @@
-@use 'core' as *;
+@use "core" as *;
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Ruluko&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
 @layer base {
   html {
-    font-family: 'Ruluko', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 }
 
@@ -33,21 +33,8 @@
 }
 
 body {
-  background: theme('colors.primaryBg');
+  background: theme("colors.primaryBg");
 }
-
-// .mainWrap {
-//   background: get($colors, 'main-bg');
-// }
-
-// .pageWrap {
-//   position: relative;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   height: 100vh;
-//   z-index: z('page-wrapper');
-// }
 
 a {
   color: inherit;
@@ -59,11 +46,11 @@ input {
   display: block;
   outline: none;
 
-  &[type='file'] {
+  &[type="file"] {
     cursor: pointer;
   }
 
-  &[type='submit'] {
+  &[type="submit"] {
     border: 1px solid;
     cursor: pointer;
   }
@@ -83,8 +70,8 @@ button {
   height: 100%;
   width: 100%;
   cursor: pointer;
-  background-color: get($colors, 'overlay');
-  z-index: z('modal');
+  background-color: get($colors, "overlay");
+  z-index: z("modal");
 
   &.transition {
     &-enter {
@@ -92,14 +79,14 @@ button {
     }
     &-enter-active {
       opacity: 1;
-      transition: get($transition, 'secondary');
+      transition: get($transition, "secondary");
     }
     &-exit {
       opacity: 1;
     }
     &-exit-active {
       opacity: 0;
-      transition: get($transition, 'secondary');
+      transition: get($transition, "secondary");
     }
   }
 
@@ -109,7 +96,7 @@ button {
     align-items: center;
     padding: 20px;
     cursor: default;
-    background: get($colors, 'white');
+    background: get($colors, "white");
   }
 }
 .loader-ellipsis {
@@ -197,7 +184,7 @@ button {
     }
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       top: 50%;
       left: 50%;
