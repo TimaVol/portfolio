@@ -213,7 +213,12 @@ export default function Admin() {
         </Form.Root>
       </Modal>
 
-      <Dashboard items={items} deleteFunc getItemsFunc={fetchData} />
+      <Dashboard
+        items={items}
+        deleteFunc
+        getItemsFunc={fetchData}
+        className="my-[60px]"
+      />
     </>
   )
 }

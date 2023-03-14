@@ -5,17 +5,19 @@ import { db, storage } from "../common/firebase"
 import { deleteObject, ref } from "firebase/storage"
 import { Item } from "../common/types"
 import * as AspectRatio from "@radix-ui/react-aspect-ratio"
-interface DashboardProps {
+interface Props {
   items?: Item[]
   deleteFunc?: boolean
   getItemsFunc?: () => void
+  className?: string
 }
 
 export default function Dashboard({
   items,
   deleteFunc,
   getItemsFunc,
-}: DashboardProps) {
+  className,
+}: Props) {
   const deleteItemHandler = async (id: string) => {
     try {
       const item = (await getDoc(doc(db, "items", id))).data()
@@ -49,13 +51,15 @@ export default function Dashboard({
     )
 
   return (
-    <div className="grid grid-cols-1 gap-[15px] md:grid-cols-3 md:gap-[30px]">
+    <div
+      className={`container grid grid-cols-1 justify-items-center gap-[15px] md:grid-cols-3 md:gap-[30px] ${className}`}
+    >
       {items?.map((item) => (
         <div key={item.id} className="rounded-lg bg-yellow-200 p-4">
           <a href={item.link} target={"_blank"} rel="noreferrer">
             <h4 className="mb-3">{item.title}</h4>
-            <div className="w-[300px] overflow-hidden rounded-md shadow-[0_2px_10px] shadow-blackA7">
-              <AspectRatio.Root ratio={16 / 9}>
+            <div className="w-[400px] overflow-hidden rounded-md shadow-[0_2px_10px] shadow-blackA7">
+              <AspectRatio.Root ratio={18 / 10}>
                 <Image
                   className="h-full w-full object-cover"
                   src={item.imgUrl}
