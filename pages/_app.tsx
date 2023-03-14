@@ -1,20 +1,11 @@
-import '../styles/globals.scss'
-import type { AppProps } from 'next/app'
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from 'recoil'
+import "../styles/globals.scss"
+import type { AppProps } from "next/app"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <RecoilRoot>
-      <div className="flex justify-center items-center h-screen">
-        <Component {...pageProps} />
-      </div>
-    </RecoilRoot>
+    <div className="flex h-screen items-center justify-center">
+      <Component {...pageProps} />
+    </div>
   )
 }
 
