@@ -1,8 +1,9 @@
 import { collection, getDocs } from "firebase/firestore"
 import { GetServerSideProps } from "next"
-import { db } from "../common/firebase"
-import { Item } from "../common/types"
-import Social from "../components/Social"
+import { db } from "@/common/firebase"
+import { Item } from "@/common/types"
+import Header from "@/components/Header"
+import Intro from "@/components/Intro"
 
 interface HomeProps {
   items: Item[]
@@ -10,9 +11,10 @@ interface HomeProps {
 
 export default function Home({ items }: HomeProps) {
   return (
-    <div className="container">
-      <h1>hello</h1>
-    </div>
+    <>
+      <Header />
+      <Intro />
+    </>
   )
 }
 

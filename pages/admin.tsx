@@ -4,11 +4,11 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 import { useRouter } from "next/router"
 import path from "path"
 import React, { FormEvent, useEffect, useState } from "react"
-import { UniqString } from "../common"
-import { auth, db, storage } from "../common/firebase"
-import { Item } from "../common/types"
-import Dashboard from "../components/Dashboard"
-import Modal from "../components/Modal"
+import { UniqString } from "@/common"
+import { auth, db, storage } from "@/common/firebase"
+import { Item } from "@/common/types"
+import Dashboard from "@/components/Dashboard"
+import Modal from "@/components/Modal"
 import * as Form from "@radix-ui/react-form"
 
 export default function Admin() {
@@ -130,7 +130,7 @@ export default function Admin() {
       <Modal
         isOpen={isModalOpen}
         closeHandler={modalCloseHandler}
-        className="bg-primaryBg"
+        className="bg-darkPurple"
       >
         <Form.Root className="w-[260px]" onSubmit={(e) => addItemHandler(e)}>
           <Form.Field className="mb-[10px] grid" name="title">

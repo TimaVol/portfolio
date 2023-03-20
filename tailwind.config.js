@@ -14,16 +14,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primaryText: "#F806CC",
-        secondaryText: "#A91079",
-        primaryBg: "#570A57",
-        secondaryBg: "#2E0249",
+        white: "#fff",
+        darkPurple: "#570A57",
+        gray: "#DBDBDB",
+        black: "#464646",
         ...blackA,
         ...violet,
         ...mauve,
       },
       backgroundImage: {
-        bgImage: 'url("/bg.png")',
+        mainGradient: "url('../public/images/mainGradient.png')",
       },
       container: {
         padding: "15px",

@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from "../common/firebase"
+import { auth } from "@/common/firebase"
 import { useRouter } from "next/router"
 import { FormEvent, useEffect, useState } from "react"
 import * as Form from "@radix-ui/react-form"
