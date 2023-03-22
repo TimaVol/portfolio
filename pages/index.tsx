@@ -4,6 +4,9 @@ import { db } from "@/common/firebase"
 import { Item } from "@/common/types"
 import Header from "@/components/Header"
 import Intro from "@/components/Intro"
+import Techs from "@/components/Techs"
+import MainSlider from "@/components/MianSlider"
+import Footer from "@/components/Footer"
 
 interface HomeProps {
   items: Item[]
@@ -14,6 +17,9 @@ export default function Home({ items }: HomeProps) {
     <>
       <Header />
       <Intro />
+      <Techs />
+      <MainSlider items={items} />
+      <Footer />
     </>
   )
 }

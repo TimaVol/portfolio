@@ -27,6 +27,9 @@
     outline: none;
   }
 }
+body {
+  overflow-x: hidden;
+}
 
 a {
   display: block;
@@ -34,6 +37,11 @@ a {
 
 input {
   outline: none;
+}
+
+.TechsSlider .swiper-wrapper {
+  align-items: center;
+  transition-timing-function: linear !important;
 }
 
 .overlay {
@@ -133,55 +141,20 @@ input {
 }
 
 .swiper-pagination {
-  display: flex;
-  position: absolute;
-  bottom: 25px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 12px;
+  width: max-content;
+  margin: 0 auto;
 
   .swiper-pagination-bullet {
-    position: relative;
-    width: 29px;
-    height: 28px;
-    border-radius: 50%;
-    border: 2px solid #f806cc;
-    margin-left: 10px;
-    cursor: pointer;
-
-    @media (max-width: 400px) {
-      width: 22px;
-      height: 22px;
-    }
-
-    &:hover:after {
-      transform: translate(-50%, -50%);
-      opacity: 1;
-    }
-
-    &:after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0, 0);
-      width: 75%;
-      height: 75%;
-      border-radius: 50%;
-      background-color: #f806cc;
-      opacity: 0;
-      transition: 300ms;
-    }
-
-    &:first-child {
-      margin-left: 0;
-    }
+    height: 12px;
+    width: 12px;
+    border-radius: 100px;
+    background: #e8e8e8;
 
     &.swiper-pagination-bullet-active {
-      &:after {
-        transform: translate(-50%, -50%);
-        opacity: 1;
-      }
+      background: #464646;
     }
   }
 }

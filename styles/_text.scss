@@ -18,8 +18,8 @@ h4 {
 }
 h5 {
   font-weight: 500 !important;
-  @include adaptiv-font(15, 18);
+  @include adaptiv-font(15, 22);
 }
 p {
-  @include adaptiv-font(14, 32);
+  @include adaptiv-font(14, 28);
 }
