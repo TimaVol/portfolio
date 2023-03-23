@@ -1,9 +1,10 @@
 import "@/styles/globals.scss"
+import { appWithTranslation } from "next-i18next"
 import type { AppProps } from "next/app"
 import { Gowun_Batang, Inter } from "next/font/google"
 
 const inter = Inter({
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
   weight: ["400", "500", "600", "700"],
 })
 
@@ -29,4 +30,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default MyApp
+export default appWithTranslation(MyApp)

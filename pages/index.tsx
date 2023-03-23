@@ -7,19 +7,37 @@ import Intro from "@/components/Intro"
 import Techs from "@/components/Techs"
 import MainSlider from "@/components/MianSlider"
 import Footer from "@/components/Footer"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+import { useTranslation } from "next-i18next"
+import { useRouter } from "next/router"
 
 interface HomeProps {
   items: Item[]
 }
 
 export default function Home({ items }: HomeProps) {
+  const { t } = useTranslation("common")
+  const router = useRouter()
+  const langHandler = (newLocale: string) => {
+    const { pathname, asPath, query } = router
+    router.push({ pathname, query }, asPath, { locale: newLocale })
+  }
+  const changeTo = router.locale === "en" ? "ukr" : "en"
   return (
     <>
-      <Header />
-      <Intro />
+      <Header
+        lang={changeTo}
+        title={t("header.title")}
+        langHandler={() => langHandler(changeTo)}
+      />
+      <Intro
+        name={t("intro.name")}
+        position={t("intro.position")}
+        about={t("intro.about")}
+      />
       <Techs />
       <MainSlider items={items} />
-      <Footer />
+      <Footer github={t("footer.github")} />
     </>
   )
 }
@@ -47,6 +65,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       items: items.length != 0 && items,
+      ...(await serverSideTranslations(context.locale ?? "en", ["common"])),
     },
   }
 }

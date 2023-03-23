@@ -1,0 +1,13 @@
+{
+  "header": {
+    "title": "My portfolio site..."
+  },
+  "intro": {
+    "name": "Tima Voloshuk",
+    "position": "Frontend Developer",
+    "about": "Meticulous web developer with 1.8 years of front-end experience, who can build you modern web applications with fast and powerful tech, my priority is learning your needs and choosing the most fitted tools for implementing your requirements. If you have an application that is already at some stage that you want to improve or redo I have experience in working with already existing code."
+  },
+  "footer": {
+    "github": "Projects on GitHub"
+  }
+}

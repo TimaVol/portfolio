@@ -1,29 +1,30 @@
 import Image from "next/image"
 import boyImg from "@/public/images/boy.png"
 
-export default function Intro() {
+interface Props {
+  name: string
+  position: string
+  about: string
+}
+
+export default function Intro({ name, position, about }: Props) {
   return (
     <div className="bg-lightGradient bg-cover py-[32px] dark:bg-darkGradient md:pb-[62px]">
       <div className="container flex flex-col items-center justify-between md:flex-row">
-        <div className="mb-[47px] flex h-max w-max items-center rounded-[6px] bg-gray py-[9px] px-[17px] dark:bg-black md:mr-8 md:mb-0 md:flex-col">
+        <div className="mb-[47px] flex h-max w-max items-center rounded-[6px] bg-gray py-[9px] px-[17px] transition-all dark:bg-black md:mr-8 md:mb-0 md:flex-col">
           <Image
             src={boyImg}
             alt="ava"
-            className="mr-[29px] max-w-[83px] rounded-[7px] border border-black dark:border-white md:mr-0 md:max-w-[263px]"
+            className="mr-[29px] max-w-[83px] rounded-[7px] border border-black transition-all dark:border-white md:mr-0 md:max-w-[263px]"
           />
-          <div className="family-gowun_batang text-black dark:text-white md:text-center">
-            <h3>Tima Voloshuk</h3>
-            <h5>Frontend Developer</h5>
+          <div className="family-gowun_batang text-black transition-all dark:text-white md:text-center">
+            <h3>{name}</h3>
+            <h5>{position}</h5>
           </div>
         </div>
 
-        <p className="max-w-[1050px] font-bold leading-[20px] text-black dark:text-white sm:leading-snug">
-          Meticulous web developer with 1.8 years of front-end experience, who
-          can build you modern web applications with fast and powerful tech, my
-          priority is learning your needs and choosing the most fitted tools for
-          implementing your requirements. If you have an application that is
-          already at some stage that you want to improve or redo I have
-          experience in working with already existing code.
+        <p className="max-w-[1050px] font-bold leading-[20px] text-black transition-all dark:text-white sm:leading-snug">
+          {about}
         </p>
       </div>
     </div>
