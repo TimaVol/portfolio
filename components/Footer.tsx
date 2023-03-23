@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export default function Footer() {
   return (
-    <footer className="bg-black py-[10px]">
+    <footer className="bg-white py-[10px] text-black dark:bg-black dark:text-white">
       <div className="container flex">
         <Link
           href="https://telegram.me/tima_vol"

@@ -25,9 +25,9 @@ export default function MainSlider({ items }: Props) {
         }}
         spaceBetween={10}
         slidesPerView={1}
-        speed={800}
+        speed={2000}
         autoplay={{
-          delay: 2000,
+          delay: 5000,
         }}
       >
         {items.map((item) => (

@@ -13,12 +13,12 @@ import "swiper/css/autoplay"
 
 export default function Techs() {
   return (
-    <div className="relative -top-[15px] bg-white py-1">
+    <div className="relative -top-[15px] bg-white py-1 dark:bg-black">
       <Swiper
         modules={[Autoplay]}
         spaceBetween={0}
         slidesPerView={3}
-        speed={4000}
+        speed={10000}
         simulateTouch={false}
         allowTouchMove={false}
         loop
