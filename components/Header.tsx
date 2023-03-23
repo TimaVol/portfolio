@@ -12,14 +12,27 @@ export default function Header({ langHandler, lang, title }: Props) {
   const [isDarkMode, setIsDarkMode] = useState(true)
 
   useEffect(() => {
-    modeHandler()
+    setIsDarkMode(localStorage.theme === "dark")
   }, [])
 
   const modeHandler = () => {
-    const html = document.querySelector("html")
-    html?.classList.toggle("dark")
+    if (isDarkMode) {
+      localStorage.theme = "light"
+      setIsDarkMode(localStorage.theme === "dark")
+    } else {
+      localStorage.theme = "dark"
+      setIsDarkMode(localStorage.theme === "dark")
+    }
 
-    setIsDarkMode(html?.classList.contains("dark") || false)
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+    }
   }
 
   return (
