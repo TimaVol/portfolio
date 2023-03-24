@@ -17,28 +17,28 @@ export default function Footer({ github }: Props) {
             target="_blank"
             rel="noreferrer"
           >
-            <Telegram className="mr-[17px] w-[27px] md:mr-[23px] md:w-[45px]" />
+            <Telegram className="mr-[17px] w-[27px] transition-all hover:text-accentDark dark:hover:text-accentLight md:mr-[23px] md:w-[45px]" />
           </Link>
           <Link
             href="https://www.linkedin.com/in/tima-voloshuk-44b0ab1b3/"
             target="_blank"
             rel="noreferrer"
           >
-            <Linkedin className="mr-[17px] w-[27px] md:mr-[23px] md:w-[45px]" />
+            <Linkedin className="mr-[17px] w-[27px] transition-all hover:text-accentDark dark:hover:text-accentLight md:mr-[23px] md:w-[45px]" />
           </Link>
           <Link
             href="mailto:tima.voloshuk@gmail.com"
             target="_blank"
             rel="noreferrer"
           >
-            <Email className="w-[27px] md:w-[45px]" />
+            <Email className="w-[27px] transition-all hover:text-accentDark dark:hover:text-accentLight md:w-[45px]" />
           </Link>
         </div>
         <Link
           href="https://github.com/TimaVol?tab=repositories"
           target="_blank"
           rel="noreferrer"
-          className="font-medium transition-all hover:text-blackLight dark:hover:text-gray"
+          className="font-medium transition-all hover:text-accentDark dark:hover:text-accentLight"
         >
           {github}
         </Link>

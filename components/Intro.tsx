@@ -17,7 +17,7 @@ export default function Intro({ name, position, about }: Props) {
             alt="ava"
             className="mr-[29px] max-w-[83px] rounded-[7px] border border-black transition-all dark:border-white md:mr-0 md:max-w-[263px]"
           />
-          <div className="family-gowun_batang text-black transition-all dark:text-white md:text-center">
+          <div className="family-montserrat text-black transition-all dark:text-white md:text-center">
             <h3>{name}</h3>
             <h5>{position}</h5>
           </div>

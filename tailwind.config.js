@@ -20,6 +20,8 @@ module.exports = {
         gray: "#DBDBDB",
         black: "#464646",
         blackLight: "rgba(53, 53, 53, 0.79)",
+        accentLight: "white",
+        accentDark: "black",
         ...blackA,
         ...violet,
         ...mauve,

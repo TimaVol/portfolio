@@ -1,32 +1,53 @@
 import "@/styles/globals.scss"
 import { appWithTranslation } from "next-i18next"
 import type { AppProps } from "next/app"
-import { Gowun_Batang, Inter } from "next/font/google"
+import { Inter, Montserrat } from "next/font/google"
+import Head from "next/head"
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
   weight: ["400", "500", "600", "700"],
 })
 
-const gowun_batang = Gowun_Batang({
-  subsets: ["latin"],
+const montserrat = Montserrat({
+  subsets: ["latin", "cyrillic"],
   weight: ["400", "700"],
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div>
-      <style jsx global>{`
-        html {
-          font-family: ${inter.style.fontFamily};
-        }
+    <>
+      <Head>
+        <title>Tima Voloshuk</title>
+        <link rel={"icon"} href="/favicon/favicon.ico" />
+        <meta name="title" content={"Tima Voloshuk"} />
+        <meta
+          name="description"
+          content={"Frontend developer with 1.8 year of commercial experience."}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.femomo.space/" />
+        <meta property="og:title" content={"Tima Voloshuk"} />
+        <meta
+          property="og:description"
+          content={"Frontend developer with 1.8 year of commercial experience."}
+        />
+        <meta property="og:image" content="" />
+      </Head>
 
-        .family-gowun_batang {
-          font-family: ${gowun_batang.style.fontFamily};
-        }
-      `}</style>
-      <Component {...pageProps} />
-    </div>
+      <div>
+        <style jsx global>{`
+          html {
+            font-family: ${inter.style.fontFamily};
+          }
+
+          .family-montserrat {
+            font-family: ${montserrat.style.fontFamily};
+          }
+        `}</style>
+        <Component {...pageProps} />
+      </div>
+    </>
   )
 }
 

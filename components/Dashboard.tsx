@@ -74,7 +74,7 @@ export default function Dashboard({
           {deleteFunc && (
             <button
               onClick={() => deleteItemHandler(item.id)}
-              className="mt-[20px] rounded-md border border-red-700 bg-gray-300 px-5 py-2 text-lg font-medium text-red-700 transition-all hover:bg-red-700 hover:text-gray-300"
+              className="mt-[20px] rounded-md border border-red-700 bg-gray px-5 py-2 text-lg font-medium text-red-700 transition-all hover:bg-red-700 hover:text-gray"
             >
               delete
             </button>
