@@ -39,17 +39,17 @@ export default function Dashboard({
       throw new Error(`${error}`)
     }
   }
-
-  return (
-    <div className="flex h-screen w-screen items-center justify-center">
-      <div className="loader-ellipsis">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+  if (!items)
+    return (
+      <div className="flex h-screen w-screen items-center justify-center">
+        <div className="loader-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
-    </div>
-  )
+    )
 
   return (
     <div
