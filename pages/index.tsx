@@ -1,30 +1,55 @@
-import { collection, getDocs } from 'firebase/firestore'
-import { GetServerSideProps } from 'next'
-import { db } from '../common/firebase'
-import { Item } from '../common/types'
-import Slider from '../components/Slider'
-import Social from '../components/Social'
+import { collection, getDocs } from "firebase/firestore"
+import { GetServerSideProps } from "next"
+import { db } from "@/common/firebase"
+import { Item } from "@/common/types"
+import Header from "@/components/Header"
+import Intro from "@/components/Intro"
+import Techs from "@/components/Techs"
+import MainSlider from "@/components/MianSlider"
+import Footer from "@/components/Footer"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+import { useTranslation } from "next-i18next"
+import { useRouter } from "next/router"
+import Head from "next/head"
 
 interface HomeProps {
   items: Item[]
 }
 
 export default function Home({ items }: HomeProps) {
+  const { t } = useTranslation("common")
+  const router = useRouter()
+  const langHandler = (newLocale: string) => {
+    const { pathname, asPath, query } = router
+    router.push({ pathname, query }, asPath, { locale: newLocale })
+  }
+  const changeTo = router.locale === "en" ? "ukr" : "en"
   return (
-    <div className="flex flex-col justify-between bg-bgImage bg-contain bg-secondaryBg h-[98%] w-[93%] sm:h-5/6 sm:w-5/6 rounded-3xl p-3 sm:p-5">
-      <Social />
-      <Slider items={items} />
-    </div>
+    <>
+      <Header
+        lang={changeTo}
+        title={t("header.title")}
+        langHandler={() => langHandler(changeTo)}
+      />
+      <Intro
+        name={t("intro.name")}
+        position={t("intro.position")}
+        about={t("intro.about")}
+      />
+      <Techs />
+      <MainSlider items={items} />
+      <Footer github={t("footer.github")} />
+    </>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   context.res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
   )
 
-  const querySnapshot = await getDocs(collection(db, 'items'))
+  const querySnapshot = await getDocs(collection(db, "items"))
 
   let items: Item[] = []
 
@@ -41,6 +66,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       items: items.length != 0 && items,
+      ...(await serverSideTranslations(context.locale ?? "en", ["common"])),
     },
   }
 }
