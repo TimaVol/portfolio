@@ -40,15 +40,16 @@ export default function Dashboard({
     }
   }
 
-  if (!items)
-    return (
+  return (
+    <div className="flex h-screen w-screen items-center justify-center">
       <div className="loader-ellipsis">
         <div></div>
         <div></div>
         <div></div>
         <div></div>
       </div>
-    )
+    </div>
+  )
 
   return (
     <div
