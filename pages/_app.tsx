@@ -32,7 +32,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           property="og:description"
           content={"Frontend developer with 1.8 year of commercial experience."}
         />
-        <meta property="og:image" content="" />
+        <meta
+          property="og:image"
+          content="https://raw.githubusercontent.com/TimaVol/portfolio/main/public/images/sitePreview.png"
+        />
       </Head>
 
       <div>
