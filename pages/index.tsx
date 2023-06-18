@@ -10,7 +10,7 @@ import Footer from "@/components/Footer"
 import { serverSideTranslations } from "next-i18next/serverSideTranslations"
 import { useTranslation } from "next-i18next"
 import { useRouter } from "next/router"
-import Head from "next/head"
+import Script from "next/script"
 
 interface HomeProps {
   items: Item[]
@@ -24,8 +24,23 @@ export default function Home({ items }: HomeProps) {
     router.push({ pathname, query }, asPath, { locale: newLocale })
   }
   const changeTo = router.locale === "en" ? "ukr" : "en"
+
   return (
     <>
+      <Script
+        src={
+          "https://www.googletagmanager.com/gtag/js?id=" +
+          process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+        }
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+        `}
+      </Script>
       <Header
         lang={changeTo}
         title={t("header.title")}
