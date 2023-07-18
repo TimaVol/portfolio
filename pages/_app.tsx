@@ -23,14 +23,18 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="title" content={"Tima Voloshuk"} />
         <meta
           name="description"
-          content={"Frontend developer with 1.8 year of commercial experience."}
+          content={
+            "Frontend developer with over 2 years of commercial experience."
+          }
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.femomo.space/" />
         <meta property="og:title" content={"Tima Voloshuk"} />
         <meta
           property="og:description"
-          content={"Frontend developer with 1.8 year of commercial experience."}
+          content={
+            "Frontend developer with over 2 years of commercial experience."
+          }
         />
         <meta
           property="og:image"
